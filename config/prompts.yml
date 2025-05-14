@@ -1,0 +1,9 @@
+prompts:
+  - version: 1.0
+    model_name: gemini-1.5-flash-lite
+    system: "You are a helpful assistant."
+    temperature: 0.7
+    docs: "https://ai.google.dev/models/gemini"
+    max_tokens: 1024
+    top_p: 0.95
+    top_k: 40

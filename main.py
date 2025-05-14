@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from app.settings import settings
+from app.controllers import chat
 import uvicorn
 
 app = FastAPI(title="fastCursor API")
+app.include_router(chat.router)
 
 @app.get("/")
 def read_root():
