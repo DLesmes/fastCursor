@@ -1,5 +1,6 @@
 import yaml
 from langchain_google_genai import ChatGoogleGenerativeAI
+from app.settings import settings
 
 class LLM:
     def __init__(self, config_path="config/prompts.yml"):
@@ -12,6 +13,7 @@ class LLM:
             max_output_tokens=self.prompt_config["max_tokens"],
             top_p=self.prompt_config["top_p"],
             top_k=self.prompt_config["top_k"],
+            google_api_key=settings.google_api_key
         )
 
     def send_message(self, session_id: str, message: str):
