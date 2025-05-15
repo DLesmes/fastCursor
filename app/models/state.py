@@ -1,5 +1,5 @@
-from langgraph.state import State
+from pydantic import BaseModel
 
-class State(State):
+class State(BaseModel):
     session_id: str
     history: list  # You can refine this structure as needed
