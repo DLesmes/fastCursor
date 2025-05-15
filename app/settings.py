@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     top_p: float = 0.95
     top_k: int = 40
 
+    # Text split parameters
+    chunk_size: int = 500
+    chunk_overlap: int = 50
+
     class Config:
         env_file = ".env"
 
@@ -40,5 +44,9 @@ class Settings(BaseSettings):
             self.top_k = prompt.get("top_k", self.top_k)
         else:
             raise ValueError(f"No prompt found for version {self.prompt_version}")
+
+        # Update text split parameters
+        self.chunk_size = int(os.getenv("CHUNK_SIZE", self.chunk_size))
+        self.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", self.chunk_overlap))
 
 settings = Settings()
