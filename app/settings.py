@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     chunk_size: int = 500
     chunk_overlap: int = 50
 
+    pdf_url: str = ""
+
     class Config:
         env_file = ".env"
 
@@ -48,5 +50,7 @@ class Settings(BaseSettings):
         # Update text split parameters
         self.chunk_size = int(os.getenv("CHUNK_SIZE", self.chunk_size))
         self.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", self.chunk_overlap))
+
+        self.pdf_url = os.getenv("PDF_URL", self.pdf_url)
 
 settings = Settings()
